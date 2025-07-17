@@ -1,0 +1,638 @@
+{% extends "base.html" %} 
+{% block title %} About Us{% endblock title %}
+
+  {% block link %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  {% endblock link %}
+{% block style %}
+ 
+        {% comment %} body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        } {% endcomment %}
+
+        {% comment %} body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            z-index: -1;
+        } {% endcomment %}
+
+        .hero-section {
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            padding: 60px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #5a6c7d;
+            text-align: center;
+            margin-bottom: 50px;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .skill-card {
+            background: #f8f9ff;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #e8ecf4;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+            border-color: #667eea;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .skill-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .values-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px;
+            border-radius: 20px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .value-item {
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .value-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .cta-section {
+            background: #2c3e50;
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .partner-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .partner-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: white;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .partner-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .partner-credentials {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .partner-contact {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            gap: 10px;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item i {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .partner-expertise {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            margin-bottom: 0;
+        }
+
+        .partner-expertise h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .partner-expertise p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .content-card {
+                padding: 30px;
+                margin: 20px 0;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-section {
+                padding: 40px 20px;
+            }
+            
+            .flip-hint {
+                display: none;
+            }
+            
+            .partner-card {
+                height: 350px;
+            }
+            
+            .partner-card-front, .partner-card-back {
+                padding: 30px 20px;
+            }
+            
+            .flip-hint span {
+                display: none;
+            }
+        }
+    
+    {% endblock style %}
+{% block body %}
+   
+
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">H P N & Company</h1>
+            <p class="hero-subtitle">Excellence in Financial Management & Account Services</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-card">
+            <h2 class="section-title">About Us</h2>
+            <p class="intro-text">
+                At our core, we are a dynamic team committed to delivering exceptional financial and account management services. Located in the heart of Bhopal, we operate full-time and on-site to ensure close collaboration and dedicated support for our clients.
+            </p>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="skill-title">Financial Reporting</h3>
+                    <p class="skill-description">Comprehensive financial reporting and data analysis to drive informed business decisions</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="skill-title">Client Relations</h3>
+                    <p class="skill-description">Expert client account management and relationship building for long-term partnerships</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="skill-title">Business Development</h3>
+                    <p class="skill-description">Strategic new business development and growth opportunity identification</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-presentation"></i>
+                    </div>
+                    <h3 class="skill-title">Presentations</h3>
+                    <p class="skill-description">Clear, insightful presentations that communicate complex financial data effectively</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="skill-title">Accounting Expertise</h3>
+                    <p class="skill-description">In-depth knowledge of accounting principles and industry best practices</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="skill-title">Fast-Paced Adaptation</h3>
+                    <p class="skill-description">Thriving in dynamic environments and adapting quickly to evolving client needs</p>
+                </div>
+            </div>
+
+            <div class="values-section">
+                <h3 style="font-size: 2rem; margin-bottom: 20px;">Our Core Values</h3>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="value-title">Integrity</h4>
+                        <p>Built on trust and ethical practices</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="value-title">Excellence</h4>
+                        <p>Committed to delivering outstanding results</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 class="value-title">Professionalism</h4>
+                        <p>Maintaining highest standards of service</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h3 class="cta-title">Our Partners</h3>
+                <p class="cta-text">
+                    Meet our distinguished partners who bring exceptional expertise and leadership to our firm.
+                </p>
+                
+                <div class="partners-grid">
+                    <div class="partner-card">
+                        <div class="partner-card-inner">
+                            <div class="partner-card-front">
+                                <div class="partner-avatar">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <h4 class="partner-name">CA Harigopal Patidar</h4>
+                                <p class="partner-credentials">FCM, B.COM</p>
+                                <div class="partner-expertise">
+                                    <h5>Expertise</h5>
+                                    <p>Financing & Business Development</p>
+                                </div>
+                            </div>
+                            <div class="partner-card-back">
+                                <div class="partner-contact">
+                                    <h4 class="contact-title">
+                                        <i class="fas fa-address-card"></i>
+                                        Contact Details
+                                    </h4>
+                                    <div class="contact-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="mailto:harigopal@hpncompany.com">caharipatidar@gmail.com</a>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fas fa-phone"></i>
+                                        <a href="tel:+919713318687">+91 9713318687</a>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fab fa-linkedin"></i>
+                                        <a href="#" target="_blank">LinkedIn Profile</a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-card">
+                        <div class="partner-card-inner">
+                            <div class="partner-card-front">
+                                <div class="partner-avatar">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <h4 class="partner-name">CA Prashant Nagar</h4>
+                                <p class="partner-credentials">ACA</p>
+                                <div class="partner-expertise">
+                                    <h5>Expertise</h5>
+                                    <p>Auditing & Assurance, GST & Income Tax Litigation</p>
+                                </div>
+                                
+                            </div>
+                            <div class="partner-card-back">
+                                <div class="partner-contact">
+                                    <h4 class="contact-title">
+                                        <i class="fas fa-address-card"></i>
+                                        Contact Details
+                                    </h4>
+                                    <div class="contact-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="mailto:prashant@hpncompany.com">prashantnagar03@gmail.com</a>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fas fa-phone"></i>
+                                        <a href="tel:+917803974166">+91 7803974166</a>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fab fa-linkedin"></i>
+                                        <a href="#" target="_blank">LinkedIn Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add smooth scrolling and entrance animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer for animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            // Observe partner cards for staggered animation
+            document.querySelectorAll('.partner-card').forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+                observer.observe(card);
+            });
+
+            // Mobile touch support for flip cards
+            document.querySelectorAll('.partner-card').forEach(card => {
+                let isFlipped = false;
+                
+                card.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        isFlipped = !isFlipped;
+                        const inner = card.querySelector('.partner-card-inner');
+                        inner.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+                    }
+                });
+            });
+            document.querySelectorAll('.skill-card').forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
+
+            // Add parallax effect to floating elements
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelectorAll('.floating-circle');
+                const speed = 0.5;
+
+                parallax.forEach(circle => {
+                    const yPos = -(scrolled * speed);
+                    circle.style.transform = `translateY(${yPos}px)`;
+                });
+            });
+        });
+    </script>
+{% endblock body %}
+		

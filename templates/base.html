@@ -1,0 +1,470 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %} {% endblock title %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+     {% block link %} {% endblock link %}
+  <style>
+	  
+    
+	
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      box-sizing: border-box;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    
+    .container, .container-fluid {
+      max-width: 100vw;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 8px 0;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .top-bar a {
+      color: #e0e7ff;
+      text-decoration: none;
+      margin: 0 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .top-bar a:hover { color: #60a5fa; }
+    .social-icons a {
+      width: 32px; height: 32px;
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      margin: 0 4px;
+      transition: all 0.3s;
+    }
+    .social-icons a:hover {
+      background: rgba(96,165,250,0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding: 12px 0;
+      position: sticky;
+      top: 0; z-index: 1000;
+      animation: fadeInUp 0.6s ease-out;
+    }
+    .navbar-brand {
+      font-size: 25px; font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-right: 2rem;
+      white-space: nowrap;
+    }
+    .navbar-nav { align-items: center; }
+    .nav-link {
+      color: #374151 !important;
+      font-weight: 500;
+      padding: 12px 18px !important;
+      border-radius: 8px;
+      transition: all 0.3s;
+      position: relative;
+      margin: 0 4px;
+      white-space: nowrap;
+    }
+    .nav-link:hover {
+      color: #667eea !important;
+      background: rgba(102,126,234,0.1);
+      transform: translateY(-2px);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      width: 0; height: 2px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      transition: all 0.3s;
+      transform: translateX(-50%);
+    }
+    .nav-link:hover::after { width: 70%; }
+    .dropdown-toggle::after { margin-left: 8px; transition: transform 0.3s; }
+    .dropdown:hover .dropdown-toggle::after { transform: rotate(180deg); }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      padding: 16px;
+      margin-top: 8px;
+      min-width: 280px;
+      max-width: 98vw;
+      max-height: 600px;
+      overflow-y: auto;
+	  width: auto;
+ 	overflow-x: auto;
+      opacity: 0; visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 10s;
+	  
+    }
+	
+@media (max-width: 991px) {
+  .dropdown-menu.extra-large {
+    columns: 1 !important;
+    min-width: 0 !important;
+    width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown-menu.show {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-menu.large { min-width: 520px; columns: 2; }
+    .dropdown-menu.extra-large {
+  columns: 3;
+  column-gap: 24px;
+  min-width: 650px;
+  max-width: 98vw;
+}.dropdown-menu.extra-large {
+  max-width: 98vw;
+  min-width: 320px;
+  width: auto;
+  left: auto !important;
+  right: 0 !important;
+  overflow-x: auto;
+}
+@media (max-width: 991px) {
+  .dropdown-menu.extra-large {
+    columns: 1 !important;
+    min-width: 0 !important;
+    width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
+
+
+.dropdown-section {
+  break-inside: avoid-column;
+  /* For older browsers: */
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.dropdown-header {
+  margin-top: 0;
+}
+
+    .dropdown-header {
+      color: #667eea;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      padding: 8px 0 4px 0;
+      border-bottom: 1px solid rgba(102,126,234,0.2);
+      break-inside: avoid;
+    }
+    .dropdown-item {
+      color: #374151;
+      padding: 10px 16px;
+      border-radius: 8px;
+      transition: all 0.3s;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      break-inside: avoid;
+    }
+    .dropdown-item:hover {
+      background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
+      color: #667eea;
+      transform: translateX(4px);
+    }
+    .dropdown-item::before { content: '→'; opacity: 0; transition: opacity 0.3s; }
+    .dropdown-item:hover::before { opacity: 1; }
+    .dropdown-divider {
+      border-top: 1px solid rgba(102,126,234,0.2);
+      margin: 12px 0;
+    }
+
+    /* Contact Button */
+    .contact-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border-radius: 25px;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102,126,234,0.4);
+      color: white;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 991px) {
+      .navbar-brand { font-size: 24px; }
+      .dropdown-menu,
+      .dropdown-menu.large,
+      .dropdown-menu.extra-large {
+        position: static !important;
+        float: none !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100vw !important;
+        margin-top: 0;
+        background: rgba(249,250,251,0.95);
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        columns: 1 !important;
+        max-height: none;
+        overflow-y: visible;
+      }
+      .nav-link::after { display: none; }
+      .nav-link { padding: 8px 16px !important; }
+      .dropdown-item { padding: 8px 16px; font-size: 14px; }
+      .dropdown-header { font-size: 11px; padding: 6px 0 4px 0; }
+      .contact-btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
+    @media (max-width: 768px) {
+      .top-bar { flex-direction: column; gap: 10px; text-align: center; }
+      .navbar-brand { font-size: 20px; }
+      .container { padding: 0 8px; }
+      .display-4 { font-size: 2rem; }
+      .lead { font-size: 1rem; }
+    }
+    @media (max-width: 576px) {
+      .top-bar { padding: 5px 10px; font-size: 12px; }
+      .navbar { padding: 8px 0; }
+      .navbar-brand { font-size: 25px; }
+      .dropdown-item { padding: 6px 12px; font-size: 13px; }
+      .dropdown-header { font-size: 10px; }
+      .contact-btn { padding: 10px 16px; font-size: 14px; }
+      .display-4 { font-size: 1.5rem; }
+      .lead { font-size: 0.9rem; }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    /* Icons for menu items */
+    .dropdown-item.company::before { content: '🏢'; }
+    .dropdown-item.license::before { content: '📋'; }
+    .dropdown-item.ngo::before { content: '🤝'; }
+    .dropdown-item.trademark::before { content: '®️'; }
+    .dropdown-item.filing::before { content: '📊'; }
+    .dropdown-item.audit::before { content: '🔍'; }
+    .dropdown-item.advisory::before { content: '💼'; }
+	{% block style %} {% endblock style %}
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center">
+        <div class="d-flex flex-wrap gap-3">
+          <a href="mailto:hpnandcompany@gmail.com">
+            <i class="fas fa-envelope"></i>
+            <span class="d-none d-sm-inline">hpnandcompany@gmail.com</span>
+          </a>
+          <a href="tel:+919713318687">
+            <i class="fas fa-phone"></i>
+            <span class="d-none d-sm-inline">+91-9713318687</span>
+          </a>
+        </div>
+        <div class="social-icons">
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Website"><i class="fas fa-globe"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/"><img src="{% static 'logo.jpg' %}" alt="CA Firm Logo" class="navbar-logo me-2" style="height:30px; width:auto;">H P N & Company</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto">
+          <!-- Start Business Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-rocket me-2"></i>Start Business
+            </a>
+            <ul class="dropdown-menu large">
+				<div class="dropdown-section">
+              <h6 class="dropdown-header">Business Registration</h6>
+              <li><a class="dropdown-item company" href="#">Company Registration</a></li>
+              <li><a class="dropdown-item company" href="#">Private Limited Company</a></li>
+              <li><a class="dropdown-item company" href="#">Public Limited Company</a></li>
+              <li><a class="dropdown-item company" href="#">LLP Registration</a></li>
+              <li><a class="dropdown-item company" href="#">One Person Company</a></li>
+              <li><a class="dropdown-item company" href="#">Nidhi Company</a></li>
+              <li><a class="dropdown-item company" href="#">Producer Company</a></li>
+              <li><a class="dropdown-item company" href="#">Foreign Company</a></li>
+              <li><a class="dropdown-item company" href="#">Partnership Registration</a></li>
+              <li><a class="dropdown-item company" href="#">Sole Proprietorship</a></li>
+              <li><hr class="dropdown-divider" /></li>
+				</div>
+				<div class="dropdown-section">
+              <h6 class="dropdown-header">Licenses</h6>
+              <li><a class="dropdown-item license" href="#">GST Registration</a></li>
+              <li><a class="dropdown-item license" href="#">FSSAI Registration</a></li>
+              <li><a class="dropdown-item license" href="#">Import Export Code</a></li>
+              <li><a class="dropdown-item license" href="#">ISO Certification</a></li>
+              <li><a class="dropdown-item license" href="#">RERA Registration</a></li>
+              <li><a class="dropdown-item license" href="#">MSME Udyam</a></li>
+              <li><a class="dropdown-item license" href="#">Shop Act Registration</a></li>
+              <li><a class="dropdown-item license" href="#">Business Reg. Number (BRN)</a></li>
+              <li><a class="dropdown-item license" href="#">Startup Registration</a></li>
+				</div>
+            </ul>
+          </li>
+          <!-- NGO Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-hands-helping me-2"></i>NGO
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item ngo" href="#">NGO Registration</a></li>
+              <li><a class="dropdown-item ngo" href="#">Section 8 NPO Registration</a></li>
+              <li><a class="dropdown-item ngo" href="#">Trust Registration</a></li>
+              <li><a class="dropdown-item ngo" href="#">Society Registration</a></li>
+              <li><a class="dropdown-item ngo" href="#">NGO Darpan Registration</a></li>
+              <li><a class="dropdown-item ngo" href="#">FCRA Registration</a></li>
+              <li><a class="dropdown-item ngo" href="#">80G 12A Registration</a></li>
+              <li><a class="dropdown-item ngo" href="#">Corporate Social Responsibility</a></li>
+            </ul>
+          </li>
+          <!-- Trademark Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-trademark me-2"></i>Trademark
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item trademark" href="#">Trademark Registration</a></li>
+              <li><a class="dropdown-item trademark" href="#">Copyright Registration</a></li>
+              <li><a class="dropdown-item trademark" href="#">Design Registration</a></li>
+              <li><a class="dropdown-item trademark" href="#">Patent Registration</a></li>
+            </ul>
+          </li>
+          <!-- Compliances Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-shield-alt me-2"></i>Compliances
+            </a>
+            <ul class="dropdown-menu extra-large">
+				<div class="dropdown-section">
+              <h6 class="dropdown-header">Filing & Returns</h6>
+              <li><a class="dropdown-item filing" href="#">ITR Filing</a></li>
+              <li><a class="dropdown-item filing" href="#">GST Return</a></li>
+              <li><a class="dropdown-item filing" href="#">ROC Filing</a></li>
+              <li><a class="dropdown-item filing" href="#">TDS Return</a></li>
+              <li><a class="dropdown-item filing" href="#">XBRL Filing</a></li>
+              <li><hr class="dropdown-divider" /></li>
+				</div>
+				<div class="dropdown-section">
+              <h6 class="dropdown-header">Audit Assurance</h6>
+              <li><a class="dropdown-item audit" href="#">GST Audit</a></li>
+              <li><a class="dropdown-item audit" href="#">NGO Audit</a></li>
+              <li><a class="dropdown-item audit" href="#">Tax Audit</a></li>
+              <li><a class="dropdown-item audit" href="#">Stock Audit</a></li>
+              <li><a class="dropdown-item audit" href="#">Statutory Audit</a></li>
+              <li><a class="dropdown-item audit" href="#">Bank Audit</a></li>
+              <li><hr class="dropdown-divider" /></li>
+			  </div>
+				<div class="dropdown-section">
+              <h6 class="dropdown-header">Advisory Consultancy</h6>
+              <li><a class="dropdown-item advisory" href="#">GST Advisory</a></li>
+              <li><a class="dropdown-item advisory" href="#">Tax Planning</a></li>
+              <li><a class="dropdown-item advisory" href="#">Legal Secretarial</a></li>
+              <li><a class="dropdown-item advisory" href="#">Project Financing</a></li>
+              <li><a class="dropdown-item advisory" href="#">NRI Taxation</a></li>
+              <li><a class="dropdown-item advisory" href="#">Strike off Section-8 Company</a></li>
+				</div>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about"><i class="fas fa-shield-alt me-2"></i>About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact"><i class="fas fa-shield-alt me-2"></i>Contact</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <a href="#" class="contact-btn">
+            <i class="fas fa-phone me-2"></i>
+            <span class="d-none d-sm-inline">Contact Us</span>
+            <span class="d-sm-none">Call</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content Area -->
+  {% block body %}
+  {% endblock body %}
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
