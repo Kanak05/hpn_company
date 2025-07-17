@@ -10,8 +10,20 @@
      {% block link %} {% endblock link %}
   <style>
 	  
-    
-	
+
+    html, body {
+            height: 100%;
+            overflow: auto; 
+            scrollbar-width: none;          
+            -ms-overflow-style: none;       
+        }
+
+      
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+      
     html, body {
       width: 100%;
       min-height: 100vh;
@@ -21,13 +33,18 @@
     * { box-sizing: border-box; }
 
     body {
+      overflow: scroll;
+      scrollbar-width: none;      /* Firefox */
+      -ms-overflow-style: none;  
       font-family: 'Inter', 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
       margin: 0;
       padding: 0;
     }
-
+    body::-webkit-scrollbar {
+        display: none;              /* Chrome, Safari */
+    }
     
     .container, .container-fluid {
       max-width: 100vw;
@@ -308,6 +325,53 @@
     .dropdown-item.filing::before { content: '📊'; }
     .dropdown-item.audit::before { content: '🔍'; }
     .dropdown-item.advisory::before { content: '💼'; }
+
+    .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
 	{% block style %} {% endblock style %}
   </style>
 </head>
@@ -460,6 +524,11 @@
     </div>
   </nav>
 
+     <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
   <!-- Content Area -->
   {% block body %}
   {% endblock body %}

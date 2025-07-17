@@ -1,16 +1,49 @@
 
  {% extends "base.html" %} 
  {% block title %} H P N & Company {% endblock title %}
-{% block body %}
+ {% block style %}
+  
+        .hero-section {
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+        }
 
-  <!-- Content Area -->
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-12 text-center text-white px-3">
-        <h1 class="display-4 mb-4">Welcome to H P N & Company</h1>
-        <p class="lead">Your trusted partner for business registration, compliance, and advisory services</p>
-        
-      </div>
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+{% endblock style %}
+ {% block body %}
+
+     <div class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Welcome to H P N & Company</h1>
+            <p class="hero-subtitle">Your trusted partner for business registration, compliance, and advisory services</p>
+        </div>
     </div>
-  </div>
+  
 {% endblock body %}
