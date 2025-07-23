@@ -1,5 +1,5 @@
-
- {% extends "base.html" %} 
+{% extends "base.html" %} 
+{% load static %}
  {% block title %} H P N & Company {% endblock title %}
  {% block style %}
   
@@ -45,5 +45,8 @@
             <p class="hero-subtitle">Your trusted partner for business registration, compliance, and advisory services</p>
         </div>
     </div>
+    <div class="container text-center my-5">
+    <img src="{% static 'homepage.jpeg' %}" alt="Homepage image" class="img-fluid" />
+</div>
   
 {% endblock body %}
