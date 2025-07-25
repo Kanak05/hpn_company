@@ -1,24 +1,7 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "builds": [
-    {
-      "src": "ca_website/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.11"
-      }
-    },
-    {
-      "src": "build.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "staticfiles",
-        "buildCommand": "bash build.sh"
-      }
-    }
-  ],
+  "buildCommand": "python3 manage.py collectstatic --noinput",
+  "outputDirectory": "staticfiles",
   "routes": [
     {
       "src": "/static/(.*)",
