@@ -2,12 +2,12 @@
 
 echo "--- Vercel Static Build Start ---"
 
-# Install dependencies *within this build context*
+# Install dependencies
 echo "Installing Python dependencies for static build..."
-pip install -r requirements.txt
+$PYTHONBIN -m pip install -r requirements.txt # Use $PYTHONBIN for pip
 
 # Collect static files
 echo "Collecting static files..."
-python manage.py collectstatic --noinput --clear
+$PYTHONBIN manage.py collectstatic --noinput --clear # Use $PYTHONBIN for python manage.py
 
 echo "--- Vercel Static Build End ---"
