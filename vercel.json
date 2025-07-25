@@ -7,25 +7,25 @@
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
-        "runtime": "python3.11" 
+        "runtime": "python3.11"
       }
     },
     {
-      "src": "build.sh", // Path to your build script
+      "src": "build.sh",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "staticfiles" // This must match your STATIC_ROOT in settings.py
+        "distDir": "staticfiles"
       }
     }
   ],
   "routes": [
     {
-      "src": "/static/(.*)", // Matches any request to /static/
-      "dest": "/static/$1"   // Serves it from the 'staticfiles' directory
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
     },
     {
-      "src": "/(.*)",       // Catch-all for all other requests
-      "dest": "ca_website/wsgi.py" // Routes them to your Django app
+      "src": "/(.*)",
+      "dest": "ca_website/wsgi.py"
     }
   ]
 }
