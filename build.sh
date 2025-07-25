@@ -12,6 +12,6 @@ python manage.py migrate --noinput
 
 # Step 3: Collect static files
 echo "Collecting static files..."
-python manage.py collectstatic --noinput --clear
+python manage.py collectstatic --noinput 
 
 echo "--- Vercel Custom Build End ---"
