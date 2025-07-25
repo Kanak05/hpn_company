@@ -1,0 +1,8 @@
+{
+  "name": "ca_website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "sudo apt-get update && sudo apt-get install -y libsqlite3-dev && python3 -m pip install -r requirements.txt && python3 manage.py collectstatic --noinput"
+  }
+}
