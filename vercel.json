@@ -11,13 +11,10 @@
       }
     },
     {
-    
-      "src": "requirements.txt",
+      
+      "src": "build.sh",
       "use": "@vercel/static-build",
       "config": {
-        
-        "installCommand": "pip install -r requirements.txt",
-        "buildCommand": "python manage.py collectstatic --noinput --clear",
         "outputDirectory": "staticfiles" 
       }
     }
@@ -25,11 +22,11 @@
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/static/$1" 
+      "dest": "/static/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "ca_website/wsgi.py" 
+      "dest": "ca_website/wsgi.py"
     }
   ]
 }
