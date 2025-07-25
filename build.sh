@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Ensure the Python environment is sourced or explicitly used
 # This typically isn't needed if using $PYTHONBIN, but can be a fallback for complex setups

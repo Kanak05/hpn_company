@@ -9,14 +9,6 @@
         "maxLambdaSize": "15mb",
         "runtime": "python3.11"
       }
-    },
-    {
-      "src": "build.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "staticfiles",
-        "buildCommand": "bash build.sh"
-      }
     }
   ],
   "routes": [
@@ -28,5 +20,7 @@
       "src": "/(.*)",
       "dest": "ca_website/wsgi.py"
     }
-  ]
+  ],
+  "buildCommand": "pip install -r requirements.txt && python manage.py makemigrations --noinput && python manage.py migrate --noinput && python manage.py collectstatic --noinput --clear",
+  "outputDirectory": "staticfiles" 
 }
