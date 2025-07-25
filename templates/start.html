@@ -1,0 +1,460 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Start Business - H P N & Company{% endblock title %}
+
+{% block style %}
+/* Hero Section */
+.hero-section {
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 24px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s ease-out;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 50px;
+    font-weight: 400;
+    animation: fadeInUp 1s ease-out 0.2s both;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.hero-cta {
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.cta-button {
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+    color: #667eea;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102,126,234,0.1), transparent);
+    transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(255,255,255,0.3);
+    color: #667eea;
+}
+
+/* Services Section */
+.services-section {
+    padding: 80px 0;
+    background: rgba(255,255,255,0.02);
+    position: relative;
+}
+
+.services-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 1s ease-out;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 60px;
+    font-weight: 300;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.service-category {
+    margin-bottom: 80px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.category-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.category-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(102,126,234,0.6), transparent);
+    border-radius: 1px;
+}
+
+.category-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.subcategory-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    margin: 40px 0 25px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(102,126,234,0.3);
+    display: inline-block;
+}
+
+/* Service Cards */
+.service-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 30px;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 1s ease-out;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.service-card:hover::before {
+    transform: translateX(100%);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(102,126,234,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+.service-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(102,126,234,0.3);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 35px rgba(102,126,234,0.4);
+}
+
+.service-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.service-description {
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.service-link {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.service-link:hover {
+    color: #93c5fd;
+    transform: translateX(5px);
+}
+
+.service-link i {
+    transition: transform 0.3s ease;
+}
+
+.service-link:hover i {
+    transform: translateX(3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .category-title {
+        font-size: 1.8rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .category-title::after {
+        display: none;
+    }
+    
+    .service-card {
+        padding: 25px;
+        margin-bottom: 20px;
+    }
+    
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .services-section {
+        padding: 60px 0;
+    }
+    
+    .service-category {
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 14px 30px;
+        font-size: 1rem;
+    }
+    
+    .service-card {
+        padding: 20px;
+    }
+    
+    .category-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animation delays for staggered effect */
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5) { animation-delay: 0.5s; }
+.service-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+{% endblock style %}
+
+{% block body %}
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">Launch Your Business Journey</h1>
+        <p class="hero-subtitle">Transform your entrepreneurial vision into reality with our comprehensive business setup solutions and expert guidance every step of the way.</p>
+        <div class="hero-cta">
+            <a href="#services" class="cta-button">
+                <i class="fas fa-rocket"></i>
+                Get Started Today
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Services Section -->
+<div class="services-section" id="services">
+    <div class="container">
+        <h2 class="section-title">Our Comprehensive Services</h2>
+        <p class="section-subtitle">Everything you need to establish and grow your business under one roof</p>
+        
+        {% for type, services in services_by_type.items %}
+        {% if services %}
+        <div class="service-category">
+            <div class="category-title">
+                <div class="category-icon">
+                    {% if type == 'business' %}
+                        <i class="fas fa-building"></i>
+                    {% elif type == 'ngo' %}
+                        <i class="fas fa-hands-helping"></i>
+                    {% elif type == 'trademark' %}
+                        <i class="fas fa-trademark"></i>
+                    {% elif type == 'compliance' %}
+                        <i class="fas fa-shield-alt"></i>
+                    {% endif %}
+                </div>
+                {% if type == 'business' %}Start Business
+                {% elif type == 'ngo' %}NGO Services
+                {% elif type == 'trademark' %}Trademark & IP
+                {% elif type == 'compliance' %}Compliance & Legal
+                {% endif %}
+            </div>
+            
+            {% if type == 'business' or type == 'compliance' %}
+                {% regroup services by header as grouped_services %}
+                {% for group in grouped_services %}
+                    <h4 class="subcategory-title">{{ group.grouper }}</h4>
+                    <div class="row">
+                        {% for service in group.list %}
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    {% if service.icon %}
+                                        <i class="{{ service.icon }}"></i>
+                                    {% else %}
+                                        <i class="fas fa-cog"></i>
+                                    {% endif %}
+                                </div>
+                                <h5 id="{{ service.title|slugify }}" class="service-title">{{ service.title }}</h5>
+                                <p class="service-description">{{ service.description }}</p>
+                                <a href="/contact/" class="service-link">
+                                    Enquire <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="row">
+                    {% for service in services %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                {% if service.icon %}
+                                    <i class="{{ service.icon }}"></i>
+                                {% else %}
+                                    <i class="fas fa-cog"></i>
+                                {% endif %}
+                            </div>
+                            <h5 id="{{ service.title|slugify }}" class="service-title">{{ service.title }}</h5>
+                            <p class="service-description">{{ service.description }}</p>
+                            <a href="/contact/" class="service-link">
+                                Enquire <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Call to Action Section -->
+<div class="hero-section" style="padding: 60px 0;">
+    <div class="container text-center">
+        <h3 class="hero-subtitle" style="font-size: 1.8rem; margin-bottom: 30px;">Ready to Start Your Business?</h3>
+        <p style="color: rgba(255,255,255,0.8); margin-bottom: 40px; font-size: 1.1rem;">Get expert consultation and personalized guidance for your business setup needs.</p>
+        <a href="/contact/" class="cta-button">
+            <i class="fas fa-phone"></i>
+            Contact Our Experts
+        </a>
+    </div>
+</div>
+{% endblock body %}

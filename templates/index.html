@@ -1,52 +1,634 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% load static %}
- {% block title %} H P N & Company {% endblock title %}
- {% block style %}
-  
-        .hero-section {
-            padding: 80px 0 60px;
-            text-align: center;
-            position: relative;
-        }
 
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease-out;
-        }
+{% block title %}H P N & Company - Your Trusted Business Partner{% endblock title %}
 
-        .hero-subtitle {
-            font-size: 1.3rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 40px;
-            font-weight: 300;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
+{% block style %}
+/* Hero Section */
+.hero-section {
+    padding: 120px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.hero-title {
+    font-size: 4.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s ease-out;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 50px;
+    font-weight: 400;
+    animation: fadeInUp 1s ease-out 0.2s both;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 60px;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Main Image Section */
+.main-image-section {
+    padding: 80px 0;
+    background: rgba(255,255,255,0.02);
+    position: relative;
+}
+
+.main-image-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.image-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
+    z-index: 1;
+    pointer-events: none;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.image-container:hover .main-image {
+    transform: scale(1.02);
+}
+
+/* Services Preview Section */
+.services-preview {
+    padding: 100px 0;
+    position: relative;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 1s ease-out;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 70px;
+    font-weight: 300;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.service-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    height: 100%;
+    animation: fadeInUp 1s ease-out;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.service-card:hover::before {
+    transform: translateX(100%);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(102,126,234,0.3);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    margin: 0 auto 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(102,126,234,0.3);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 40px rgba(102,126,234,0.4);
+}
+
+.service-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.service-description {
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.service-link {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.service-link:hover {
+    color: #93c5fd;
+    transform: translateX(5px);
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+    padding: 100px 0;
+    background: rgba(255,255,255,0.02);
+    position: relative;
+}
+
+.why-choose-us::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.feature-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    height: 100%;
+    animation: fadeInUp 1s ease-out;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(102,126,234,0.2);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #60a5fa;
+    margin: 0 auto 20px;
+    border: 1px solid rgba(96,165,250,0.3);
+}
+
+.feature-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.feature-description {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.cta-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 40px;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.cta-button {
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+    color: #667eea;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255,255,255,0.3);
+    box-shadow: none;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(255,255,255,0.3);
+    color: #667eea;
+}
+
+.cta-button.secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.5);
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .section-title {
+        font-size: 2.4rem;
+    }
+    
+    .service-card,
+    .feature-card {
+        margin-bottom: 30px;
+    }
+    
+    .services-preview,
+    .why-choose-us {
+        padding: 70px 0;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .service-card,
+    .feature-card {
+        padding: 30px 20px;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+    }
+}
+
+/* Animation delays for staggered effect */
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.2s; }
+.feature-card:nth-child(3) { animation-delay: 0.3s; }
+.feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 {% endblock style %}
- {% block body %}
 
-     <div class="hero-section">
-        <div class="container">
-            <h1 class="hero-title">Welcome to H P N & Company</h1>
-            <p class="hero-subtitle">Your trusted partner for business registration, compliance, and advisory services</p>
+{% block body %}
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">Welcome to H P N & Company</h1>
+        <p class="hero-subtitle">Your trusted partner for comprehensive business registration, compliance solutions, and strategic advisory services that drive success</p>
+        
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number" data-count="500">0</span>
+                
+                <span class="stat-label">Happy Clients</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="15">0</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="1000">0</span>
+                
+                <span class="stat-label">Projects Completed</span>
+            </div>
         </div>
     </div>
-    <div class="container text-center my-5">
-    <img src="{% static 'homepage.jpeg' %}" alt="Homepage image" class="img-fluid" />
 </div>
-  
+
+<!-- Main Image Section -->
+{% comment %} <div class="main-image-section">
+    <div class="container">
+        <div class="image-container">
+            <img src="{% static 'homepage.jpeg' %}" alt="H P N & Company - Professional Business Services" class="main-image" />
+        </div>
+    </div>
+</div> {% endcomment %}
+
+<!-- Services Preview Section -->
+<div class="services-preview">
+    <div class="container">
+        <h2 class="section-title">Our Core Services</h2>
+        <p class="section-subtitle">Comprehensive solutions to establish, manage, and grow your business</p>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="service-title">Business Registration</h3>
+                    <p class="service-description">Complete company incorporation services including Private Limited, LLP, and Partnership registration</p>
+                    <a href="/startbusiness/" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="service-title">Compliance & Legal</h3>
+                    <p class="service-description">GST filing, income tax returns, ROC compliance, and comprehensive audit services</p>
+                    <a href="/startbusiness/#compliances" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-trademark"></i>
+                    </div>
+                    <h3 class="service-title">Trademark & IP</h3>
+                    <p class="service-description">Protect your brand with trademark registration, copyright, and patent services</p>
+                    <a href="/startbusiness/#trademark" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="service-title">NGO Services</h3>
+                    <p class="service-description">NGO registration, Section 8 company setup, and non-profit organization compliance</p>
+                    <a href="/startbusiness/#ngo" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Why Choose Us Section -->
+<div class="why-choose-us">
+    <div class="container">
+        <h2 class="section-title">Why Choose H P N & Company?</h2>
+        <p class="section-subtitle">Experience the difference with our professional approach and dedicated service</p>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4 class="feature-title">Expert Team</h4>
+                    <p class="feature-description">Certified professionals with deep industry knowledge and experience</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4 class="feature-title">Quick Turnaround</h4>
+                    <p class="feature-description">Fast and efficient service delivery without compromising on quality</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 class="feature-title">Personalized Service</h4>
+                    <p class="feature-description">Tailored solutions to meet your specific business requirements</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h4 class="feature-title">Ongoing Support</h4>
+                    <p class="feature-description">Continuous guidance and support even after service completion</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action Section -->
+<div class="cta-section">
+    <div class="container">
+        <h2 class="cta-title">Ready to Start Your Business Journey?</h2>
+        <p class="cta-subtitle">Get expert consultation and take the first step towards your business success</p>
+        
+        <div class="cta-buttons">
+            <a href="/contact/" class="cta-button">
+                <i class="fas fa-phone"></i>
+                Get Free Consultation
+            </a>
+            <a href="/startbusiness/" class="cta-button secondary">
+                <i class="fas fa-eye"></i>
+                View All Services
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const counters = document.querySelectorAll(".stat-number");
+    const speed = 100; // Lower = faster
+
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute("data-count");
+        const count = +counter.innerText;
+
+        // Calculate increment
+        const increment = Math.ceil(target / speed);
+
+        if (count < target) {
+          counter.innerText = count + increment;
+          setTimeout(updateCount, 20);
+        } else {
+          counter.innerText = target + "+"; // Add plus sign
+        }
+      };
+
+      updateCount();
+    });
+  });
+</script>
+
 {% endblock body %}
