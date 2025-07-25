@@ -1,14 +1,18 @@
 
+# Ensure the Python environment is sourced or explicitly used
+# This typically isn't needed if using $PYTHONBIN, but can be a fallback for complex setups
 
 echo "Installing dependencies..."
-pip install -r requirements.txt
+# Use $PYTHONBIN to explicitly call pip
+$PYTHONBIN -m pip install -r requirements.txt
 
 echo "Making migrations..."
-python manage.py makemigrations --noinput
+# Use $PYTHONBIN to explicitly call python
+$PYTHONBIN manage.py makemigrations --noinput
 echo "Applying migrations..."
-python manage.py migrate --noinput
+$PYTHONBIN manage.py migrate --noinput
 
 echo "Collecting static files..."
-python manage.py collectstatic --noinput --clear
+$PYTHONBIN manage.py collectstatic --noinput --clear
 
 echo "Build process completed!"
