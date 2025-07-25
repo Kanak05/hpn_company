@@ -4,10 +4,10 @@ echo "--- Vercel Static Build Start ---"
 
 # Install dependencies
 echo "Installing Python dependencies for static build..."
-$PYTHONBIN -m pip install -r requirements.txt # Use $PYTHONBIN for pip
+/usr/local/bin/python -m pip install -r requirements.txt # Explicitly use python path
 
 # Collect static files
 echo "Collecting static files..."
-$PYTHONBIN manage.py collectstatic --noinput --clear # Use $PYTHONBIN for python manage.py
+/usr/local/bin/python manage.py collectstatic --noinput --clear # Explicitly use python path
 
 echo "--- Vercel Static Build End ---"
