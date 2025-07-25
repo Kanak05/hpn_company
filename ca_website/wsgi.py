@@ -26,7 +26,7 @@ application = get_wsgi_application()
 
 # Configure WhiteNoise to serve static files
 # The path here should point to the STATIC_ROOT directory, which is 'staticfiles'
-# application = WhiteNoise(application, root=os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'staticfiles'))
+application = WhiteNoise(application, root=os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'staticfiles'))
 
 # Vercel expects the application to be named 'app'
 app = application
