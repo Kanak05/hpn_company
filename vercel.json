@@ -1,13 +1,31 @@
 {
-  "builds": [{
-    "src": "ca_website/wsgi.py",
-    "use": "@vercel/python",
-    "config": { "maxLambdaSize": "15mb", "runtime": "python3.13.2" }
-  }],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "builds": [
+    {
+      "src": "ca_website/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.11" // IMPORTANT: Vercel might not support 3.13.2 yet. Use 3.11 or 3.12 if available. Check Vercel's docs for supported runtimes.
+      }
+    },
+    {
+      "src": "build.sh", // Path to your build script
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles" // This must match your STATIC_ROOT in settings.py
+      }
+    }
+  ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "ca_website/wsgi.py"
+      "src": "/static/(.*)", // Matches any request to /static/
+      "dest": "/static/$1"   // Serves it from the 'staticfiles' directory
+    },
+    {
+      "src": "/(.*)",       // Catch-all for all other requests
+      "dest": "ca_website/wsgi.py" // Routes them to your Django app
     }
   ]
 }
