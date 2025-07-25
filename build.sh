@@ -4,10 +4,12 @@ echo "--- Vercel Static Build Start ---"
 
 # Install dependencies
 echo "Installing Python dependencies for static build..."
-/usr/local/bin/python -m pip install -r requirements.txt # Explicitly use python path
+# Try 'python3' or just 'python' directly as Vercel should add it to PATH for Python projects
+python3 -m pip install -r requirements.txt 
 
 # Collect static files
 echo "Collecting static files..."
-/usr/local/bin/python manage.py collectstatic --noinput --clear # Explicitly use python path
+# Try 'python3' or just 'python' directly
+python3 manage.py collectstatic --noinput --clear 
 
 echo "--- Vercel Static Build End ---"
